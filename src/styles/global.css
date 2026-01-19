@@ -1,0 +1,70 @@
+:root {
+    --bg: #050816;
+    --bg-elevated: #0b1020;
+    --accent: #3b82f6;
+    --accent-soft: rgba(59, 130, 246, 0.1);
+    --text-main: #f9fafb;
+    --text-muted: #9ca3af;
+    --border-subtle: #1f2937;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+    background: radial-gradient(circle at top left, #111827 0, #020617 60%);
+    color: var(--text-main);
+  }
+  
+  .app-root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .app-header {
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+  }
+  
+  .app-header h1 {
+    margin: 0;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  
+  .app-body {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    height: calc(100vh - 3rem);
+  }
+  
+  .app-sidebar {
+    border-right: 1px solid var(--border-subtle);
+    background: linear-gradient(to bottom, #020617, #020617 40%, #030712 100%);
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  
+  .app-main {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem 1rem 1rem;
+    gap: 0.75rem;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .metrics-bar {
+    flex-shrink: 0;
+  }
