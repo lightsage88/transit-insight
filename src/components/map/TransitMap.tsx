@@ -5,6 +5,9 @@ import maplibregl from "maplibre-gl";
 import busIcon from '../../assets/icons/bus.svg';
 import trainIcon from '../../assets/icons/train.svg';
 import { VehicleMarkers } from "./VehicleMarkers";
+console.log(import.meta.env);
+
+const map_key = import.meta.env.VITE_MAP_TILER_API_KEY;
 
 const mockVehicles = [
   {
@@ -51,10 +54,10 @@ export const TransitMap: React.FC = () => {
         initialViewState={{
           longitude: -122.6765,
           latitude: 45.5231,
-          zoom: 11,
+          zoom: 13,
         }}
         style={{ width: 1000, height: 1000 }}
-        mapStyle="https://demotiles.maplibre.org/style.json"
+        mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${map_key}`}
       >
         <VehicleMarkers vehicles={mockVehicles} />
       </Map>

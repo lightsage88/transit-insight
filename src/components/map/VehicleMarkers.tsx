@@ -15,47 +15,47 @@ interface Props {
 }
 
 export const VehicleMarkers: React.FC<Props> = ({ vehicles }) => {
+  // const geojson = {
+  //   type: "FeatureCollection",
+  //   features: vehicles.map((v) => ({
+  //     type: "Feature",
+  //     properties: {
+  //       icon:
+  //         v.routeType === "rail" ? "train-icon" : "bus-icon",
+  //       delay: v.delay,
+  //     },
+  //     geometry: {
+  //       type: "Point",
+  //       coordinates: [v.lon, v.lat],
+  //     },
+  //   })),
+  // };
   const geojson = {
     type: "FeatureCollection",
-    features: vehicles.map((v) => ({
+    features: vehicles.map((v: any) => ({
       type: "Feature",
-      properties: {
-        icon:
-          v.routeType === "rail" ? "train-icon" : "bus-icon",
-        delay: v.delay,
-      },
       geometry: {
         type: "Point",
-        coordinates: [v.lon, v.lat],
+        coordinates: [v.lon, v.lat], // lon, lat is correct
       },
+      properties: {},
     })),
   };
+
+  console.log('Vehicle markers vehicles:', vehicles);
 
   return (
     <Source id="vehicles" type="geojson" data={geojson}>
       <Layer
-        id="vehicle-icons"
-        type="symbol"
-        layout={{
-          "icon-image": ["get", "icon"],
-        //   "icon-size": [
-        //     "interpolate",
-        //     ["linear"],
-        //     ["zoom"],
-        //     10, 0.6,
-        //     14, 1.1
-        //   ],
-          "icon-allow-overlap": true,
-        }}
-        paint={{
-          "icon-color": [
-            "case",
-            [">", ["get", "delay"], 120], "#ef4444", // very late
-            [">", ["get", "delay"], 60], "#f59e0b", // late
-            "#22c55e" // on time
-          ],
-        }}
-      />
+  id="vehicle-debug-circles"
+  type="circle"
+  paint={{
+    "circle-radius": 16,
+    "circle-color": "#ff0000",
+    "circle-stroke-width": 2,
+    "circle-stroke-color": "#ffffff",
+  }}
+/>
     </Source>
   );
 };
