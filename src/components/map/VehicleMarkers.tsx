@@ -7,6 +7,8 @@ interface Vehicle {
   longitude: number;
   type: string;
   delay: number;
+  signMessage?: string;
+  garage?: string;
 }
 
 interface Props {
@@ -22,6 +24,8 @@ export const VehicleMarkers: React.FC<Props> = ({ vehicles }) => {
         icon:
           v.type === "rail" ? "train-icon" : "bus-icon",
         delay: v.delay,
+        signMessage: v.signMessage,
+        garage: v.garage,
       },
       geometry: {
         type: "Point",
