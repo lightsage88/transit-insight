@@ -1,18 +1,20 @@
 import React from "react";
+import { routes } from "../../shared/constants";
 
-const mockRoutes = [
-  { id: "4", name: "4 – Division/Fessenden" },
-  { id: "14", name: "14 – Hawthorne" },
-  { id: "72", name: "72 – Killingsworth/82nd" },
-];
+interface RouteFilterPanelProps {
+  selectedRoutes: string[];
+  onSelectionChange: (routes: string[]) => void;
+}
 
-export const RouteFilterPanel: React.FC = () => {
-  const [selected, setSelected] = React.useState<string[]>(mockRoutes.map(r => r.id));
-
+export const RouteFilterPanel: React.FC<RouteFilterPanelProps> = ({
+  selectedRoutes,
+  onSelectionChange,
+}) => {
   const toggleRoute = (id: string) => {
-    setSelected((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
-    );
+    const newSelection = selectedRoutes.includes(id)
+      ? selectedRoutes.filter((x) => x !== id)
+      : [...selectedRoutes, id];
+    onSelectionChange(newSelection);
   };
 
   return (
@@ -43,7 +45,7 @@ export const RouteFilterPanel: React.FC = () => {
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
-        {mockRoutes.map((route) => (
+        {routes.map((route) => (
           <label
             key={route.id}
             style={{
@@ -56,7 +58,7 @@ export const RouteFilterPanel: React.FC = () => {
           >
             <input
               type="checkbox"
-              checked={selected.includes(route.id)}
+              checked={selectedRoutes.includes(route.id)}
               onChange={() => toggleRoute(route.id)}
             />
             <span>{route.name}</span>

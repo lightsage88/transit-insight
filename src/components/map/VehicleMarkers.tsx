@@ -3,10 +3,9 @@ import { Source, Layer } from "react-map-gl/maplibre";
 
 interface Vehicle {
   id: string;
-  lat: number;
-  lon: number;
-//   routeType: "bus" | "rail";
-routeType: string;
+  latitude: number;
+  longitude: number;
+  type: string;
   delay: number;
 }
 
@@ -15,30 +14,19 @@ interface Props {
 }
 
 export const VehicleMarkers: React.FC<Props> = ({ vehicles }) => {
-  // const geojson = {
-  //   type: "FeatureCollection",
-  //   features: vehicles.map((v) => ({
-  //     type: "Feature",
-  //     properties: {
-  //       icon:
-  //         v.routeType === "rail" ? "train-icon" : "bus-icon",
-  //       delay: v.delay,
-  //     },
-  //     geometry: {
-  //       type: "Point",
-  //       coordinates: [v.lon, v.lat],
-  //     },
-  //   })),
-  // };
   const geojson = {
     type: "FeatureCollection",
-    features: vehicles.map((v: any) => ({
+    features: vehicles.map((v) => ({
       type: "Feature",
+      properties: {
+        icon:
+          v.type === "rail" ? "train-icon" : "bus-icon",
+        delay: v.delay,
+      },
       geometry: {
         type: "Point",
-        coordinates: [v.lon, v.lat], // lon, lat is correct
+        coordinates: [v.longitude, v.latitude],
       },
-      properties: {},
     })),
   };
 
