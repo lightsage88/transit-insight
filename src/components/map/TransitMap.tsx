@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import Map, { Source, Layer } from "react-map-gl/maplibre";
+import Map from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import maplibregl from "maplibre-gl";
 import { VehicleMarkers } from "./VehicleMarkers";
