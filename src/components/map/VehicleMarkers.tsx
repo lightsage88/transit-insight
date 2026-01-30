@@ -19,9 +19,9 @@ interface Props {
 
 export const VehicleMarkers: React.FC<Props> = ({ vehicles }) => {
   const geojson = {
-    type: "FeatureCollection",
+    type: "FeatureCollection" as const,
     features: vehicles.map((v) => ({
-      type: "Feature",
+      type: "Feature" as const,
       properties: {
         icon:
           v.type === "rail" ? "train-icon" : "bus-icon",
@@ -33,7 +33,7 @@ export const VehicleMarkers: React.FC<Props> = ({ vehicles }) => {
         routeNumber: v.routeNumber,
       },
       geometry: {
-        type: "Point",
+        type: "Point" as const,
         coordinates: [v.longitude, v.latitude],
       },
     })),
