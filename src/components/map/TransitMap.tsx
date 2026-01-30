@@ -51,7 +51,7 @@ export const TransitMap: React.FC<TransitMapProps> = ({ selectedRoutes }) => {
   };
 
   return (
-<div style={{ flex: 1, height: "100%", borderRadius: 16, overflow: "hidden" }}>
+    <div style={{ flex: 1, height: "100%", borderRadius: 16, overflow: "hidden", position: "relative" }}>
       <Map
         ref={mapRef}
         mapLib={maplibregl}

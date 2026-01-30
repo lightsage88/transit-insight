@@ -18,7 +18,7 @@ export const VehicleTooltip: React.FC<VehicleTooltipProps> = ({
       style={{
         position: "absolute",
         left: x,
-        top: y + 190,
+        top: y - 100, // Position above the cursor/marker
         transform: "translateX(-50%)",
         background: "rgba(0, 0, 0, 0.85)",
         color: "white",
