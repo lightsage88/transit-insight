@@ -19,6 +19,7 @@ export function useVehicles(selectedRoutes: string[]) {
       setError(null);
       try {
         const result = await fetchVehiclesByRoutes(selectedRoutes);
+        console.log('result', result);
         if (!cancelled) {
           setVehicles(result);
         }

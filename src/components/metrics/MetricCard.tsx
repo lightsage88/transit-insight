@@ -21,33 +21,16 @@ export const MetricCard: React.FC<MetricCardProps> = ({
 }) => {
   return (
     <div
-      style={{
-        flex: 1,
-        minWidth: 0,
-        padding: "0.75rem 0.9rem",
-        borderRadius: 12,
-        border: "1px solid rgba(148, 163, 184, 0.3)",
-        background:
-          "radial-gradient(circle at top left, rgba(148, 163, 184, 0.16), rgba(15, 23, 42, 0.95))",
-      }}
+      className="metric-card"
     >
       <div
-        style={{
-          fontSize: "0.7rem",
-          textTransform: "uppercase",
-          letterSpacing: "0.12em",
-          color: "#9ca3af",
-          marginBottom: "0.3rem",
-        }}
+        className="metric-label"
+      
       >
         {label}
       </div>
       <div
-        style={{
-          fontSize: "1.1rem",
-          fontWeight: 600,
-          color: toneColor[tone],
-        }}
+        className="metric-value tone-warn"
       >
         {value}
       </div>

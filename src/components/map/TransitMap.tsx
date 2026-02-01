@@ -60,7 +60,7 @@ export const TransitMap: React.FC<TransitMapProps> = ({ selectedRoutes }) => {
           latitude: 45.5231,
           zoom: 13,
         }}
-        style={{ width: 1000, height: 1000 }}
+  style={{ width: "100%", height: "100%" }}
         mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${map_key}`}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
