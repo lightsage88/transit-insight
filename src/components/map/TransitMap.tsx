@@ -51,7 +51,17 @@ export const TransitMap: React.FC<TransitMapProps> = ({ selectedRoutes }) => {
   };
 
   return (
-    <div style={{ flex: 1, height: "100%", borderRadius: 16, overflow: "hidden", position: "relative" }}>
+    <div 
+      style={{ 
+        flex: 1, 
+        height: "100%", 
+        borderRadius: 16, 
+        overflow: "hidden", 
+        position: "relative",
+        touchAction: "pan-y pinch-zoom"
+      }}
+      className="map-wrapper"
+    >
       <Map
         ref={mapRef}
         mapLib={maplibregl}
@@ -60,11 +70,19 @@ export const TransitMap: React.FC<TransitMapProps> = ({ selectedRoutes }) => {
           latitude: 45.5231,
           zoom: 13,
         }}
-  style={{ width: "100%", height: "100%" }}
+        style={{ 
+          width: "100%", 
+          height: "100%",
+          touchAction: "pan-y pinch-zoom"
+        }}
         mapStyle={`https://api.maptiler.com/maps/streets/style.json?key=${map_key}`}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         interactiveLayerIds={["vehicle-debug-circles"]}
+        // Mobile-friendly settings
+        touchZoomRotate={true}
+        touchPitch={false}
+        dragRotate={false}
       >
         <VehicleMarkers vehicles={vehicles} />
       </Map>
